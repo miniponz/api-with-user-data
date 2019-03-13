@@ -1,6 +1,8 @@
 import cities from '../data/sample-data-array.js';
 import makeCityTemplate from './make-city-template.js';
+import makeHeaderTemplate from './make-header-template.js';
 const weatherDisplay = document.getElementById('weather-display');
+const headerDisplay = document.getElementById('header-display');
 
 function loadCities(cities) {
     cities.list.forEach(city => {
@@ -9,4 +11,10 @@ function loadCities(cities) {
     });
 }
 
+function loadHeader() {
+    const dom = makeHeaderTemplate();
+    headerDisplay.appendChild(dom);
+}
+
+loadHeader();
 loadCities(cities);

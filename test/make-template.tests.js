@@ -1,7 +1,10 @@
 import './html-equal.js';
 import makeCityTemplate from '../src/make-city-template.js';
+import makeHeaderTemplate from '../src/make-header-template.js';
 
 const test = QUnit.test;
+
+QUnit.module('template tests');
 
 test('template matches harded coded HTML display', assert => {
     //arrange
@@ -38,5 +41,22 @@ test('template matches harded coded HTML display', assert => {
             </ul>
         </section>
     </li>
+    `);
+});
+
+
+
+test('template will match hard coded header', assert => {
+    //arrange
+    
+    //act
+    const result = makeHeaderTemplate();
+    //assert
+    assert.htmlEqual(result, /*html*/ `
+    <header>
+        <img class="header-image" src="./assets/snowflake.jpg" alt="microscopic snowflake against blue background">
+        <h1>What's It Doing Outside?</h1>
+        <img class="header-image" src="./assets/sun.jpeg" alt="photograph of sun against blue sky">
+    </header>
     `);
 });
