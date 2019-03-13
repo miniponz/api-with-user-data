@@ -6,9 +6,17 @@ h1 {
     margin: 10px;
 }
 
+/* h2 {
+    text-decoration: underline;
+} */
+
 .header-image {
     height: 78px;
     border-radius: 10px;
+}
+
+#header-display, #weather-display {
+
 }
 
 ul {
