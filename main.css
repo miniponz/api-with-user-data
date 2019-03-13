@@ -8,5 +8,25 @@ h1 {
 
 .header-image {
     height: 78px;
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+#weather-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} 
+
+.weather-li {
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 200px;
+    margin: 10px;
+    padding: 5px;
+    justify-content: center;
 }
 

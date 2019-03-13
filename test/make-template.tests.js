@@ -27,7 +27,7 @@ test('template matches harded coded HTML display', assert => {
 
     //assert
     assert.htmlEqual(result, /*html*/`    
-    <li>        
+    <li class="weather-li">        
         <h2>Shuzenji</h2>
         <section class="weather-summary">
             <h3>Outside Right Now:</h3>

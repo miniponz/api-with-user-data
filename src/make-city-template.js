@@ -1,6 +1,6 @@
 export default function makeCityTemplate(data) {
     const html = /*html*/ `
-    <li>
+    <li class="weather-li">
     <h2>${data.name}</h2>
         <section class="weather-summary">
             <h3>Outside Right Now:</h3>
