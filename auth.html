@@ -8,23 +8,18 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
-    <title>The Things</title>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <title>Sign In</title>
 </head>
 <body>
     <div id="header-display">
     </div>
     <main>
-        <section id="search-display">
-            <form id="search-form">
-                <label for="city-input">Search by City:</label>
-                <input type="text" id="city-input" name="city-input">
-                <button>go</button>
-            </form>
-        </section>
-        <ul id="weather-display">
-        </ul>
+        <p>Sign in to see what it's doing outside</p>
+        <div id="firebaseui-auth-container"></div>
     </main>
     <footer></footer>
-    <script type="module" src="src/index.js"></script>
+    <script type="module" src="src/auth.js"></script>
 </body>
 </html>
