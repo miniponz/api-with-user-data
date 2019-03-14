@@ -1,4 +1,5 @@
 import cities from '../data/sample-data.js';
+import { auth, favoritesByUserRef } from './firebase.js';
 import makeCityTemplate, { clearResults } from './make-city-template.js';
 // import makeHeaderTemplate from './make-header-template.js';
 import './search-component.js';
@@ -12,6 +13,20 @@ const weatherDisplay = document.getElementById('weather-display');
 
 function loadCities(city) {
     const dom = makeCityTemplate(city);
+    const favoriteStar = dom.querySelector('.favorite');
+    favoriteStar.addEventListener('click', () => {
+        const userId = auth.currentUser.uid;
+        const userFavoritesRef = favoritesByUserRef.child(userId);
+        const userFavoriteCityRef = userFavoritesRef.child(city.name);
+        userFavoriteCityRef.set({
+            name: city.name,
+            temp: city.main.temp,
+            wind: city.wind.speed,
+            humidity: city.main.humidity,
+            highTemp: city.main.temp_max,
+            lowTemp: city.main.temp_min
+        });
+    });
     weatherDisplay.appendChild(dom);
 }
 

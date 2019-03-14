@@ -1,7 +1,8 @@
 import { auth, usersRef } from '../src/firebase.js';
 import { loadHeader } from './make-header-template.js';
+const options = { skipAuth: true };
 
-loadHeader();
+loadHeader(options);
 
 const ui = new firebaseui.auth.AuthUI(auth);
 
@@ -12,7 +13,7 @@ ui.start('#firebaseui-auth-container', {
     ],
     // Other config options...
     // credentialHealper: firebaseui.auth.credentialHealper.NONE
-    signInSuccessUrl: './search.html',
+    signInSuccessUrl: './index.html',
     callbacks: {
         signInSucessWithAuthResult(authResult) {
             const user = authResult.user;
