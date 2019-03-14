@@ -10,36 +10,70 @@ import { loadHeader } from './make-header-template.js';
 
 const weatherDisplay = document.getElementById('weather-display');
 
-
 function loadCities(city) {
     const dom = makeCityTemplate(city);
-    const favoriteStar = dom.querySelector('.favorite');
-    favoriteStar.addEventListener('click', () => {
-        const userId = auth.currentUser.uid;
-        const userFavoritesRef = favoritesByUserRef.child(userId);
-        const userFavoriteCityRef = userFavoritesRef.child(city.name);
-        userFavoriteCityRef.set({
-            name: city.name,
-            temp: city.main.temp,
-            wind: city.wind.speed,
-            humidity: city.main.humidity,
-            highTemp: city.main.temp_max,
-            lowTemp: city.main.temp_min
+    const favoriteStar = dom.querySelector('.favorite-star');
+    const userId = auth.currentUser.uid;
+    const userFavoritesRef = favoritesByUserRef.child(userId);
+    const userFavoriteCityRef = userFavoritesRef.child(city.name);
+    userFavoriteCityRef.on('value')
+        .then(snapshot => {
+            const value = snapshot.val();
+            let isFavorite = false;
+            if(value) {
+                addFavorite();
+            }
+            else {
+                removeFavorite();
+            }
+            function addFavorite() {
+                isFavorite = true;
+                favoriteStar.textContent = '★';
+                favoriteStar.classList.add('favorite');
+            }
+
+            function removeFavorite() {
+                isFavorite = false;
+                favoriteStar.textContent = '☆';
+                favoriteStar.classList.remove('favorite');
+            }
+
+            favoriteStar.addEventListener('click', () => {
+                if(isFavorite) {
+                    userFavoriteCityRef.remove();
+                    removeFavorite();
+                }
+                else {
+                    userFavoriteCityRef.set({
+                        name: city.name,
+                        temp: city.main.temp,
+                        wind: city.wind.speed,
+                        humidity: city.main.humidity,
+                        highTemp: city.main.temp_max,
+                        lowTemp: city.main.temp_min
+                    });
+                    addFavorite();
+                }
+            });
         });
-    });
     weatherDisplay.appendChild(dom);
 }
 
 loadHeader();
 loadCities(cities);
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', loadQuery);
+
+auth.onAuthStateChanged(() => {
+    loadQuery();
+});
+
+function loadQuery() {
     clearResults();
     const query = window.location.hash.slice(1);
     const queryOptions = readQueryOptions(query);
     // console.log(queryOptions);
     updateCityName(queryOptions.q);
-    
     const url = makeSearchUrl(queryOptions);
     // console.log(url);
     fetch(url)
@@ -47,4 +81,4 @@ window.addEventListener('hashchange', () => {
         .then(results => {
             loadCities(results);
         });
-});
+}

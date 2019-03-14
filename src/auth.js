@@ -1,6 +1,8 @@
-import { auth, usersRef } from '../src/firebase.js';
+import { auth, usersRef } from './firebase.js';
 import { loadHeader } from './make-header-template.js';
 const options = { skipAuth: true };
+
+console.log(auth.currentUser);
 
 loadHeader(options);
 
@@ -12,10 +14,10 @@ ui.start('#firebaseui-auth-container', {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
     // Other config options...
-    // credentialHealper: firebaseui.auth.credentialHealper.NONE
+    credentialHelper: firebaseui.auth.CredentialHelper.NONE,
     signInSuccessUrl: './index.html',
     callbacks: {
-        signInSucessWithAuthResult(authResult) {
+        signInSuccessWithAuthResult(authResult) {
             const user = authResult.user;
             usersRef.child(user.uid)
                 .set({

@@ -38,6 +38,7 @@ test('template matches harded coded HTML display', assert => {
                 <li>% Humidity: 89</li>
                 <li>Low Temp: 287.04</li>
                 <li>High Temp: 292.04</li>
+                <li>Add To Favorites: <span class="favorite">☆</span></li>
             </ul>
         </section>
     </li>

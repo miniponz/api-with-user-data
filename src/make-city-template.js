@@ -11,7 +11,7 @@ export default function makeCityTemplate(data) {
                 <li>% Humidity: ${data.main.humidity}</li>
                 <li>Low Temp: ${data.main.temp_min}</li>
                 <li>High Temp: ${data.main.temp_max}</li>
-                <li>Add To Favorites: <span class="favorite">☆</span></li>
+                <li>Add To Favorites: <span class="favorite-star">☆</span></li>
             </ul>
         </section>
     </li>
