@@ -4,7 +4,7 @@ import makeHeaderTemplate from '../src/make-header-template.js';
 
 const test = QUnit.test;
 
-QUnit.module('template tests');
+QUnit.module('city template test');
 
 test('template matches harded coded HTML display', assert => {
     //arrange
@@ -44,7 +44,7 @@ test('template matches harded coded HTML display', assert => {
     `);
 });
 
-
+QUnit.module('header template test');
 
 test('template will match hard coded header', assert => {
     //arrange
@@ -58,5 +58,39 @@ test('template will match hard coded header', assert => {
         <h1>What's It Doing Outside?</h1>
         <img class="header-image" src="./assets/sun.jpeg" alt="photograph of sun against blue sky">
     </header>
+    `);
+});
+
+QUnit.module('profile template test');
+
+function makeProfileTemplate(user) {
+    const html = /*html*/ `
+    <div id="profile">
+        <span id="user-name">${user.displayName}</span>
+        <img id="profile-image" src="${user.photoURL}" alt="user profile image">
+        <button>Sign Out</button> 
+    </div>
+    `;
+
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content;
+}
+
+test('makes user profile', assert => {
+   //arrange
+    const user = {
+        displayName: 'Cara Ponzini',
+        photoURL: '../assets/peach.jpeg'
+    };
+   //act
+    const result = makeProfileTemplate(user);
+   //assert
+    assert.htmlEqual(result, /*html*/ `
+    <div id="profile">
+        <span id="user-name">Cara Ponzini</span>
+        <img id="profile-image" src="../assets/peach.jpeg" alt="user profile image">
+        <button>Sign Out</button> 
+    </div>
     `);
 });

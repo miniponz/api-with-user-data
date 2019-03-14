@@ -1,4 +1,4 @@
-import { auth } from '../src/firebase/firebase.js';
+import { auth, usersRef } from '../src/firebase/firebase.js';
 import { loadHeader } from './make-header-template.js';
 
 loadHeader();
@@ -8,9 +8,21 @@ const ui = new firebaseui.auth.AuthUI(auth);
 ui.start('#firebaseui-auth-container', {
     signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
-
-    // signInSuccessUrl: './' + window.location.hash,
-    credentialHealper: firebaseui.auth.credentialHealper.NONE
+    // Other config options...
+    // credentialHealper: firebaseui.auth.credentialHealper.NONE
+    signInSuccessUrl: './search.html',
+    callbacks: {
+        signInSucessWithAuthResult(authResult) {
+            const user = authResult.user;
+            usersRef.child(user.uid)
+                .set({
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    photoURL: user.photoURL
+                });
+            return true;
+        }
+    }
 });
