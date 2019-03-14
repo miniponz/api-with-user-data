@@ -26,6 +26,6 @@ loadCities(cities);
 window.addEventListener('hashchange', () => {
     const query = window.location.hash.slice(1);
     const queryOptions = readQueryOptions(query);
-    console.log(queryOptions);
+    // console.log(queryOptions);
     updateCityName(queryOptions.q);
 });
