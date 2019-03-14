@@ -13,10 +13,6 @@ h1 {
     margin: 10px;
 }
 
-/* h2 {
-    text-decoration: underline;
-} */
-
 .header-image {
     height: 78px;
     border-radius: 10px;
@@ -50,3 +46,10 @@ ul {
     display: none;
 }
 
+.login {
+    text-align: center;
+}
+
+#login-prompt {
+    text-align: center;
+}

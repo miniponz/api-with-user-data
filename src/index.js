@@ -12,6 +12,7 @@ const prompt = document.getElementById('prompt');
 
 loadHeader();
 
+
 window.addEventListener('hashchange', loadQuery);
 
 auth.onAuthStateChanged(() => {
