@@ -31,7 +31,7 @@ ul {
     list-style: none;
 }
 
-#weather-display {
+#weather-display, #favorites-display {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -44,5 +44,9 @@ ul {
     margin: 10px;
     padding: 5px;
     justify-content: center;
+}
+
+.hidden {
+    display: none;
 }
 

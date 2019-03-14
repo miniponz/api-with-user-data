@@ -38,7 +38,7 @@ test('template matches harded coded HTML display', assert => {
                 <li>% Humidity: 89</li>
                 <li>Low Temp: 287.04</li>
                 <li>High Temp: 292.04</li>
-                <li>Add To Favorites: <span class="favorite">☆</span></li>
+                <li>Add To Favorites: <span class="favorite-star">☆</span></li>
             </ul>
         </section>
     </li>
@@ -55,10 +55,12 @@ test('template will match hard coded header', assert => {
     //assert
     assert.htmlEqual(result, /*html*/ `
     <header>
+        <div id="header">
         <img class="header-image" src="./assets/snowflake.jpg" alt="microscopic snowflake against blue background">
         <h1>What's It Doing Outside?</h1>
         <img class="header-image" src="./assets/sun.jpeg" alt="photograph of sun against blue sky">
-    </header>
+        </div>
+        </header>
     `);
 });
 
