@@ -20,3 +20,10 @@ export default function makeCityTemplate(data) {
     template.innerHTML = html;
     return template.content;
 }
+
+export function clearResults() {
+    const ul = document.getElementById('weather-display');
+    while(ul.children.length > 0) {
+        ul.lastElementChild.remove();
+    }
+}
