@@ -1,6 +1,6 @@
 import './html-equal.js';
 import makeCityTemplate from '../src/make-city-template.js';
-import makeHeaderTemplate, { makeProfileTemplate } from '../src/make-header-template.js';
+import { makeHeaderTemplate, makeProfileTemplate } from '../src/make-header-template.js';
 
 const test = QUnit.test;
 

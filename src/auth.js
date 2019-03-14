@@ -1,4 +1,4 @@
-import { auth, usersRef } from '../src/firebase/firebase.js';
+import { auth, usersRef } from '../src/firebase.js';
 import { loadHeader } from './make-header-template.js';
 
 loadHeader();

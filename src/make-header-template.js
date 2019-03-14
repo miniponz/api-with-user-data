@@ -1,11 +1,13 @@
-import { auth } from "./firebase/firebase";
+import { auth } from './firebase.js';
 
-export default function makeHeaderTemplate() {
+export function makeHeaderTemplate() {
     const html = `
     <header>
+        <div id="header">
         <img class="header-image" src="./assets/snowflake.jpg" alt="microscopic snowflake against blue background">
         <h1>What's It Doing Outside?</h1>
         <img class="header-image" src="./assets/sun.jpeg" alt="photograph of sun against blue sky">
+        </div>
     </header>
     `;
     const template = document.createElement('template');
@@ -13,7 +15,7 @@ export default function makeHeaderTemplate() {
     return template.content;
 }
 
-function makeProfileTemplate(user) {
+export function makeProfileTemplate(user) {
     const html = /*html*/ `
     <div id="profile">
         <span id="user-name">${user.displayName}</span>
