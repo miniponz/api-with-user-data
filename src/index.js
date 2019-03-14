@@ -1,6 +1,8 @@
 import cities from '../data/sample-data-array.js';
 import makeCityTemplate from './make-city-template.js';
 import makeHeaderTemplate from './make-header-template.js';
+import './search-component.js';
+
 const weatherDisplay = document.getElementById('weather-display');
 const headerDisplay = document.getElementById('header-display');
 

@@ -1,4 +1,4 @@
-import { writeSearchToQuery, readQueryOptions } from '../src/hash-query.js';
+import { writeSearchToQuery, readQueryOptions } from '../src/hash-functions.js';
 
 const test = QUnit.test;
 
