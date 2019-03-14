@@ -1,6 +1,6 @@
 import './html-equal.js';
 import makeCityTemplate from '../src/make-city-template.js';
-import makeHeaderTemplate from '../src/make-header-template.js';
+import makeHeaderTemplate, { makeProfileTemplate } from '../src/make-header-template.js';
 
 const test = QUnit.test;
 
@@ -62,20 +62,6 @@ test('template will match hard coded header', assert => {
 });
 
 QUnit.module('profile template test');
-
-function makeProfileTemplate(user) {
-    const html = /*html*/ `
-    <div id="profile">
-        <span id="user-name">${user.displayName}</span>
-        <img id="profile-image" src="${user.photoURL}" alt="user profile image">
-        <button>Sign Out</button> 
-    </div>
-    `;
-
-    const template = document.createElement('template');
-    template.innerHTML = html;
-    return template.content;
-}
 
 test('makes user profile', assert => {
    //arrange

@@ -1,3 +1,5 @@
+import { auth } from "./firebase/firebase";
+
 export default function makeHeaderTemplate() {
     const html = `
     <header>
@@ -11,8 +13,44 @@ export default function makeHeaderTemplate() {
     return template.content;
 }
 
-const headerDisplay = document.getElementById('header-display');
-export function loadHeader() {
-    const dom = makeHeaderTemplate();
-    headerDisplay.appendChild(dom);
+function makeProfileTemplate(user) {
+    const html = /*html*/ `
+    <div id="profile">
+        <span id="user-name">${user.displayName}</span>
+        <img id="profile-image" src="${user.photoURL}" alt="user profile image">
+        <button>Sign Out</button> 
+    </div>
+    `;
+
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content;
 }
+
+const headerDisplay = document.getElementById('header-display');
+
+export function loadHeader(options) {
+    const dom = makeHeaderTemplate();
+    const header = dom.querySelector('header');
+    headerDisplay.appendChild(dom);
+
+    if(options && options.skipAuth) {
+        return;
+    }
+
+    auth.onAuthStateChanged(user => {
+        if(user) {
+            const userDom = makeProfileTemplate(user);
+            const signOutButton = userDom.querySelector('button');
+            signOutButton.addEventListener('click', () => {
+                auth.signOut();
+            });
+            header.appendChild(userDom);
+        }
+        else {
+            window.location = './auth.html';
+        }
+    });
+}
+
+
