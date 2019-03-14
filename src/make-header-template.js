@@ -10,3 +10,9 @@ export default function makeHeaderTemplate() {
     template.innerHTML = html;
     return template.content;
 }
+
+const headerDisplay = document.getElementById('header-display');
+export function loadHeader() {
+    const dom = makeHeaderTemplate();
+    headerDisplay.appendChild(dom);
+}

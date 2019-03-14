@@ -5,18 +5,14 @@ import './search-component.js';
 import { updateCityName } from './search-component.js';
 import { readQueryOptions } from './hash-functions.js';
 import makeSearchUrl from './make-search-url.js';
+import { loadHeader } from './make-header-template.js';
 
 const weatherDisplay = document.getElementById('weather-display');
-const headerDisplay = document.getElementById('header-display');
+
 
 function loadCities(city) {
     const dom = makeCityTemplate(city);
     weatherDisplay.appendChild(dom);
-}
-
-function loadHeader() {
-    const dom = makeHeaderTemplate();
-    headerDisplay.appendChild(dom);
 }
 
 loadHeader();
