@@ -1,4 +1,4 @@
-import { app } from '../src/favorites.js';
+import { app } from '../src/firebase.js';
 import './html-equal.js';
 import './make-template.tests.js';
 import './hash-query.tests.js';
