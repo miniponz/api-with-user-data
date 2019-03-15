@@ -1,6 +1,5 @@
 import { auth, favoritesByUserRef } from './firebase.js';
 import makeCityTemplate, { clearResults } from './make-city-template.js';
-// import makeHeaderTemplate from './make-header-template.js';
 import './search-component.js';
 import { updateCityName } from './search-component.js';
 import { readQueryOptions } from './hash-functions.js';
