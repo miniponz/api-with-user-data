@@ -5,7 +5,7 @@ const config = {
     projectId: 'api-with-user-data',
 };
 
-firebase.initializeApp(config);
+export const app = firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 const db = firebase.database();
