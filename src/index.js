@@ -13,10 +13,6 @@ loadHeader();
 
 window.addEventListener('hashchange', loadQuery);
 
-// auth.onAuthStateChanged(() => {
-//     loadQuery();
-// });
-
 function loadQuery() {
     clearResults();
     const query = window.location.hash.slice(1);

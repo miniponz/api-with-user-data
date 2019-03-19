@@ -1,7 +1,6 @@
 import { loadHeader } from './make-header-template.js';
 import convertObjectToArray from './object-to-array.js';
 import { auth, favoritesByUserRef } from './firebase.js';
-// import makeCityTemplate from './make-city-template.js';
 
 loadHeader();
 

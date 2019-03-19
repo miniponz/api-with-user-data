@@ -11,7 +11,7 @@ ui.start('#firebaseui-auth-container', {
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
-    // Other config options...
+
     credentialHelper: firebaseui.auth.CredentialHelper.NONE,
     signInSuccessUrl: './index.html',
     callbacks: {
